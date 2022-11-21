@@ -3,12 +3,12 @@
 ## Overview
 Overview - This app allows users to search for any team in the NFL, NBA, NHL, MLB, NCAAF, NCAAB and show different stats. Stats include, team conference/ division, real-time scores, and current betting odds. The app also allows users to favorite teams to easily keep track of them.
 
-### Technologies used
-Backend:
+## Technologies used
+### Backend:
 - Mongoose
 - Axios
 - Node/ Express
-Frontend:
+### Frontend:
 - React
 - Bootstrap
 
