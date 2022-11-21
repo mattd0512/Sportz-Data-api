@@ -33,7 +33,7 @@ Overview - This app allows users to search for any team in the NFL, NBA, NHL, ML
 - User should be able to see the odds of the current game that is happening for each team (if supplied)
 
 ## Wireframes
-![myImg](.png)
+![myImg](openPage.png)
 ![myImg](signup.png)
 ![myImg](login.png)
 ![myImg](homepage.png)
