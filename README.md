@@ -4,13 +4,13 @@
 Overview - This app allows users to search for any team in the NFL, NBA, NHL, MLB, NCAAF, NCAAB and show different stats. Stats include, team conference/ division, real-time scores, and current betting odds. The app also allows users to favorite teams to easily keep track of them.
 
 ## Team Schedule
-Monday (11/21)- have user signup, signin, logout complete and have full crud for api
-Tuesday (11/22) - have routing for navbar done
-Monday (11/28) - Have users library set up & bookmarking for users done
-Tuesday (11/29) - Tackle front end work
-Wednesday (11/30) - Finish and polish up UI
-Thursday (12/1) - Tackle any bugs or errors in backend or front end
-Friday (12/2) - Present!
+- Monday (11/21)- have user signup, signin, logout complete and have full crud for api
+- Tuesday (11/22) - have routing for navbar done
+- Monday (11/28) - Have users library set up & bookmarking for users done
+- Tuesday (11/29) - Tackle front end work
+- Wednesday (11/30) - Finish and polish up UI
+- Thursday (12/1) - Tackle any bugs or errors in backend or front end
+- Friday (12/2) - Present!
 
 ## Technologies used
 ### Backend:
