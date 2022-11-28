@@ -1,16 +1,20 @@
 const mongoose = require('mongoose')
 
 const sportSchema = new mongoose.Schema({
-    conference: {
+    summary: {
         type: String,
         required: true,
     },
-    division: {
+    teams: {
         type: String,
         required: true,
     },
-    league: {
-        type: String,
+    scoreboard: {
+        type: Number,
+        required: true,
+    },
+    odds: {
+        type: Number,
         required: true,
     },
 })

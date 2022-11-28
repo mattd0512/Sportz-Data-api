@@ -3,8 +3,6 @@ const express = require('express')
 // Passport docs: http://www.passportjs.org/docs/
 const passport = require('passport')
 
-const Sport = require('../models/sport')
-
 const User = require('../models/user')
 
 const apiKey = require('../APIKey')
@@ -19,12 +17,10 @@ const handle404 = customErrors.handle404
 
 const router = express.Router()
 
-
-// NFL Homepage
-router.get('/nfl', (req, res) => {
+router.get('/nfl/games', (req, res) => {
 	axios({
         method: "GET",
-		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
+		url: 'https://sportspage-feeds.p.rapidapi.com/games',
         params: {league: 'nfl'},
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
@@ -40,11 +36,10 @@ router.get('/nfl', (req, res) => {
 		});
 });
 
-// NBA HOMEPAGE
-router.get('/nba', (req, res) => {
+router.get('/nba/games', (req, res) => {
 	axios({
         method: "GET",
-		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
+		url: 'https://sportspage-feeds.p.rapidapi.com/games',
         params: {league: 'nba'},
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
@@ -60,11 +55,10 @@ router.get('/nba', (req, res) => {
 		});
 });
 
-// MLB HOMEPAGE
-router.get('/mlb', (req, res) => {
+router.get('/mlb/teams', (req, res) => {
 	axios({
         method: "GET",
-		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
+		url: 'https://sportspage-feeds.p.rapidapi.com/games',
         params: {league: 'mlb'},
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
@@ -80,11 +74,10 @@ router.get('/mlb', (req, res) => {
 		});
 });
 
-// NHL HOMEPAGE
-router.get('/nhl', (req, res) => {
+router.get('/nhl/teams', (req, res) => {
 	axios({
         method: "GET",
-		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
+		url: 'https://sportspage-feeds.p.rapidapi.com/games',
         params: {league: 'nhl'},
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
@@ -100,11 +93,10 @@ router.get('/nhl', (req, res) => {
 		});
 });
 
-// NCAAF HOMEPAGE
-router.get('/ncaaf', (req, res) => {
+router.get('/ncaaf/teams', (req, res) => {
 	axios({
         method: "GET",
-		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
+		url: 'https://sportspage-feeds.p.rapidapi.com/games',
         params: {league: 'ncaaf'},
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
@@ -120,11 +112,10 @@ router.get('/ncaaf', (req, res) => {
 		});
 });
 
-// NCAAB HOMEPAGE
-router.get('/ncaab', (req, res) => {
+router.get('/ncaab/teams', (req, res) => {
 	axios({
         method: "GET",
-		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
+		url: 'https://sportspage-feeds.p.rapidapi.com/games',
         params: {league: 'ncaab'},
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
@@ -141,3 +132,4 @@ router.get('/ncaab', (req, res) => {
 });
 
 module.exports = router
+

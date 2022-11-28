@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
 
-const sportSchema = new mongoose.Schema({
+const teamSchema = new mongoose.Schema({
+    team: {
+        type: String,
+        required: true,
+    },
     conference: {
         type: String,
         required: true,
     },
-    division: {
-        type: String,
-        required: true,
-    },
     league: {
-        type: String,
+        type: Number,
         required: true,
     },
 })
 
-module.exports = mongoose.model('Sport', sportSchema)
+module.exports = mongoose.model('Team', teamSchema)
