@@ -21,14 +21,15 @@ const router = express.Router()
 
 
 // NFL Homepage
-router.get('/nfl', (req, res) => {
+router.get('/nfl', requireToken, (req, res) => {
 	axios({
         method: "GET",
 		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
         params: {league: 'nfl'},
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
-            'X-RapidAPI-Host': 'sportspage-feeds.p.rapidapi.com'
+            'X-RapidAPI-Host': 'sportspage-feeds.p.rapidapi.com',
+            'Authorization': `Basic ${token}`
         }
 	})
         .then(handle404)
