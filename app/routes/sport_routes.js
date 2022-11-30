@@ -3,10 +3,6 @@ const express = require('express')
 // Passport docs: http://www.passportjs.org/docs/
 const passport = require('passport')
 
-const Sport = require('../models/sport')
-
-const User = require('../models/user')
-
 const apiKey = require('../APIKey')
 
 const requireToken = passport.authenticate('bearer', { session: false })
@@ -21,7 +17,7 @@ const router = express.Router()
 
 
 // NFL Homepage
-router.get('/nfl', requireToken, (req, res) => {
+router.get('/nfl', (req, res) => {
 	axios({
         method: "GET",
 		url: 'https://sportspage-feeds.p.rapidapi.com/conferences',
@@ -29,7 +25,6 @@ router.get('/nfl', requireToken, (req, res) => {
         headers: {
             'X-RapidAPI-Key': 'e654759496msh635638a99679754p17ffeejsn007998d740cd',
             'X-RapidAPI-Host': 'sportspage-feeds.p.rapidapi.com',
-            'Authorization': `Basic ${token}`
         }
 	})
         .then(handle404)
