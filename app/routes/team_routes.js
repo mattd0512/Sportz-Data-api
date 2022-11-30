@@ -131,4 +131,12 @@ router.get('/ncaab/teams', (req, res) => {
 		});
 });
 
+router.get('teams/bookmarks/:apiId', (req, res, next) => {
+	const apiId = req.params.apiId
+	Team.findOne({ apiId: apiId })
+		.then((team) => 
+		res.status(200).json({ game: game }))
+		.catch(next)
+})
+
 module.exports = router

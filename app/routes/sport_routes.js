@@ -136,4 +136,40 @@ router.get('/ncaab', (req, res) => {
 		});
 });
 
+router.patch('sports/myteams/:apiId', requireToken, (req, res, next) => {
+    const apiId = req.params.apiId
+    const userId = req.user.id
+    addTeam(apiId)
+    User.findById(userId)
+        .then(handle404)
+        .then(user => {
+            if(!user.myTeams.includes(apiId)) {
+                user.myTeams.push(apiId)
+                user.save()
+                return user
+            }
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+})
+
+router.patch('/sports/myteams/remove/:apiId', requireToken, (req, res, next) => {
+    const apiId = req.params.apiId
+    const userId = req.user.id
+    User.findById(userId)
+        .then(handle404)
+        .then(user => {
+            const myTeams = user.myTeams.slice()
+            const ind = myTeams.indexOf(apiId)
+            if (ind > -1) {
+                myTeams.splice(ind, 1)
+            }
+            user.myTeams = myTeams
+            user.save()
+            return user
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+})
+
 module.exports = router
