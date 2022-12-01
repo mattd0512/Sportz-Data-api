@@ -20,7 +20,7 @@ const router = express.Router()
 
 const User = require('../models/user')
 
-const Game = require('../models/game')	
+const Game = require('../models/game')  
 
 router.get('/nfl/games', (req, res) => {
 	axios({
@@ -135,249 +135,250 @@ router.get('/ncaab/games', (req, res) => {
 			res.status(500).json({ message: err });
 		});
 });
+
 // PATCH (NFL)
 router.patch('/nfl/games/mylibrary/:gameId', (req, res, next) => {
-	delete req.body.game.owner
+    delete req.body.game.owner
 
-	const gameId = req.params.gameId
-	const userId = req.user.id
+    const gameId = req.params.gameId
+    const userId = req.user.id
 
-	User.findbygameId(gameId)
-		.then(handle404)
-		.then(user => {
-			if(!user.myGames.includes(gameId)) {
-				user.myGames.push(gameId)
-				user.save()
-				return user	
-			}
-		})
-		.then((user) => res.status(201).json({ user: user }))
-		.catch(next)
-	})
+    User.findbygameId(gameId)
+        .then(handle404)
+        .then(user => {
+            if(!user.myGames.includes(gameId)) {
+                user.myGames.push(gameId)
+                user.save()
+                return user 
+            }
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+    })
 
 router.patch('/nfl/games/mylibrary/remove/:gameId', (req, res, next) => {
 
-	const gameId = req.params.gameId
-	const userId = req.user.id
-		
-		User.findbyId(userId)
-			.then(handle404)
-			.then(user => {
-				const myGames = user.myGames.slice()
-				const ind = myGames.indexOf(gameId)
-				if (ind > -1) {
-					myGames.splice(ind, 1)
-				}
-				user.myGames = myGames
-				user.save()
-				return user
-			})
-			.then((user) => res.status(201).json({ user: user }))
-				.catch(next)
-	})
+    const gameId = req.params.gameId
+    const userId = req.user.id
+        
+        User.findbyId(userId)
+            .then(handle404)
+            .then(user => {
+                const myGames = user.myGames.slice()
+                const ind = myGames.indexOf(gameId)
+                if (ind > -1) {
+                    myGames.splice(ind, 1)
+                }
+                user.myGames = myGames
+                user.save()
+                return user
+            })
+            .then((user) => res.status(201).json({ user: user }))
+                .catch(next)
+    })
 
 // PATCH (NBA)
 router.patch('/nba/games/mylibrary/:gameId', (req, res, next) => {
-	delete req.body.game.owner
+    delete req.body.game.owner
 
-	const gameId = req.params.gameId
-	const userId = req.user.id
+    const gameId = req.params.gameId
+    const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			if(!user.myGames.includes(gameId)) {
-				user.myGames.push(gameId)
-				user.save()
-				return user	
-			}
-		})
-		.then((user) => res.status(201).json({ user: user }))
-		.catch(next)
-	})
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            if(!user.myGames.includes(gameId)) {
+                user.myGames.push(gameId)
+                user.save()
+                return user 
+            }
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+    })
 
 router.patch('/nba/games/mylibrary/remove/:gameId', (req, res, next) => {
 
 const gameId = req.params.gameId
 const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			const myGames = user.myGames.slice()
-			const ind = myGames.indexOf(gameId)
-			if (ind > -1) {
-				myGames.splice(ind, 1)
-			}
-			user.myGames = myGames
-			user.save()
-			return user
-		})
-		.then((user) => res.status(201).json({ user: user }))
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            const myGames = user.myGames.slice()
+            const ind = myGames.indexOf(gameId)
+            if (ind > -1) {
+                myGames.splice(ind, 1)
+            }
+            user.myGames = myGames
+            user.save()
+            return user
+        })
+        .then((user) => res.status(201).json({ user: user }))
         .catch(next)
 })
 
 // PATCH (MLB)
 router.patch('/mlb/games/mylibrary/:gameId', (req, res, next) => {
-	delete req.body.game.owner
+    delete req.body.game.owner
 
-	const gameId = req.params.gameId
-	const userId = req.user.id
+    const gameId = req.params.gameId
+    const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			if(!user.myGames.includes(gameId)) {
-				user.myGames.push(gameId)
-				user.save()
-				return user	
-			}
-		})
-		.then((user) => res.status(201).json({ user: user }))
-		.catch(next)
-	})
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            if(!user.myGames.includes(gameId)) {
+                user.myGames.push(gameId)
+                user.save()
+                return user 
+            }
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+    })
 
 router.patch('/mlb/games/mylibrary/remove/:gameId', (req, res, next) => {
 
 const gameId = req.params.gameId
 const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			const myGames = user.myGames.slice()
-			const ind = myGames.indexOf(gameId)
-			if (ind > -1) {
-				myGames.splice(ind, 1)
-			}
-			user.myGames = myGames
-			user.save()
-			return user
-		})
-		.then((user) => res.status(201).json({ user: user }))
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            const myGames = user.myGames.slice()
+            const ind = myGames.indexOf(gameId)
+            if (ind > -1) {
+                myGames.splice(ind, 1)
+            }
+            user.myGames = myGames
+            user.save()
+            return user
+        })
+        .then((user) => res.status(201).json({ user: user }))
         .catch(next)
 })
 
 // PATCH (NHL)
 router.patch('/nhl/games/mylibrary/:gameId', (req, res, next) => {
-	delete req.body.game.owner
+    delete req.body.game.owner
 
-	const gameId = req.params.gameId
-	const userId = req.user.id
+    const gameId = req.params.gameId
+    const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			if(!user.myGames.includes(gameId)) {
-				user.myGames.push(gameId)
-				user.save()
-				return user	
-			}
-		})
-		.then((user) => res.status(201).json({ user: user }))
-		.catch(next)
-	})
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            if(!user.myGames.includes(gameId)) {
+                user.myGames.push(gameId)
+                user.save()
+                return user 
+            }
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+    })
 
 router.patch('/nhl/games/mylibrary/remove/:gameId', (req, res, next) => {
 
 const gameId = req.params.gameId
 const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			const myGames = user.myGames.slice()
-			const ind = myGames.indexOf(gameId)
-			if (ind > -1) {
-				myGames.splice(ind, 1)
-			}
-			user.myGames = myGames
-			user.save()
-			return user
-		})
-		.then((user) => res.status(201).json({ user: user }))
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            const myGames = user.myGames.slice()
+            const ind = myGames.indexOf(gameId)
+            if (ind > -1) {
+                myGames.splice(ind, 1)
+            }
+            user.myGames = myGames
+            user.save()
+            return user
+        })
+        .then((user) => res.status(201).json({ user: user }))
         .catch(next)
 })
 
 // PATCH (NCAAF)
 router.patch('/ncaaf/games/mylibrary/:gameId', (req, res, next) => {
-	delete req.body.game.owner
+    delete req.body.game.owner
 
-	const gameId = req.params.gameId
-	const userId = req.user.id
+    const gameId = req.params.gameId
+    const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			if(!user.myGames.includes(gameId)) {
-				user.myGames.push(gameId)
-				user.save()
-				return user	
-			}
-		})
-		.then((user) => res.status(201).json({ user: user }))
-		.catch(next)
-	})
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            if(!user.myGames.includes(gameId)) {
+                user.myGames.push(gameId)
+                user.save()
+                return user 
+            }
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+    })
 
 router.patch('/ncaaf/games/mylibrary/remove/:gameId', (req, res, next) => {
 
 const gameId = req.params.gameId
 const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			const myGames = user.myGames.slice()
-			const ind = myGames.indexOf(gameId)
-			if (ind > -1) {
-				myGames.splice(ind, 1)
-			}
-			user.myGames = myGames
-			user.save()
-			return user
-		})
-		.then((user) => res.status(201).json({ user: user }))
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            const myGames = user.myGames.slice()
+            const ind = myGames.indexOf(gameId)
+            if (ind > -1) {
+                myGames.splice(ind, 1)
+            }
+            user.myGames = myGames
+            user.save()
+            return user
+        })
+        .then((user) => res.status(201).json({ user: user }))
         .catch(next)
 })
 
 // PATCH (NCAAB)
 router.patch('/ncaab/games/mylibrary/:gameId', (req, res, next) => {
-	delete req.body.game.owner
+    delete req.body.game.owner
 
-	const gameId = req.params.gameId
-	const userId = req.user.id
+    const gameId = req.params.gameId
+    const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			if(!user.myGames.includes(gameId)) {
-				user.myGames.push(gameId)
-				user.save()
-				return user	
-			}
-		})
-		.then((user) => res.status(201).json({ user: user }))
-		.catch(next)
-	})
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            if(!user.myGames.includes(gameId)) {
+                user.myGames.push(gameId)
+                user.save()
+                return user 
+            }
+        })
+        .then((user) => res.status(201).json({ user: user }))
+        .catch(next)
+    })
 
 router.patch('/ncaab/games/mylibrary/remove/:gameId', (req, res, next) => {
 
 const gameId = req.params.gameId
 const userId = req.user.id
 
-	User.findbyId(userId)
-		.then(handle404)
-		.then(user => {
-			const myGames = user.myGames.slice()
-			const ind = myGames.indexOf(gameId)
-			if (ind > -1) {
-				myGames.splice(ind, 1)
-			}
-			user.myGames = myGames
-			user.save()
-			return user
-		})
-		.then((user) => res.status(201).json({ user: user }))
+    User.findbyId(userId)
+        .then(handle404)
+        .then(user => {
+            const myGames = user.myGames.slice()
+            const ind = myGames.indexOf(gameId)
+            if (ind > -1) {
+                myGames.splice(ind, 1)
+            }
+            user.myGames = myGames
+            user.save()
+            return user
+        })
+        .then((user) => res.status(201).json({ user:ser }))
         .catch(next)
 })
 
