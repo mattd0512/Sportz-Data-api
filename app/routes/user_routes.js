@@ -143,4 +143,16 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
+// SHOW route for profile
+router.get('/my-profile', requireToken, (req, res, next) => {
+	User.findById(req.user.id)
+	.then(user => {
+		user.token = null
+		user.hashedPassword = null
+		return user
+	})
+	.then((user) => res.status(201).json({user : user }))
+	.catch(nexr)
+})
+
 module.exports = router

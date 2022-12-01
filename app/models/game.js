@@ -17,6 +17,15 @@ const sportSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    gameId: {
+        type: String,
+        required: true,
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
 })
 
 module.exports = mongoose.model('Sport', sportSchema)

@@ -55,7 +55,7 @@ router.get('/nba/games', (req, res) => {
 		});
 });
 
-router.get('/mlb/teams', (req, res) => {
+router.get('/mlb/games', (req, res) => {
 	axios({
         method: "GET",
 		url: 'https://sportspage-feeds.p.rapidapi.com/games',
@@ -74,7 +74,7 @@ router.get('/mlb/teams', (req, res) => {
 		});
 });
 
-router.get('/nhl/teams', (req, res) => {
+router.get('/nhl/games', (req, res) => {
 	axios({
         method: "GET",
 		url: 'https://sportspage-feeds.p.rapidapi.com/games',
@@ -93,7 +93,7 @@ router.get('/nhl/teams', (req, res) => {
 		});
 });
 
-router.get('/ncaaf/teams', (req, res) => {
+router.get('/ncaaf/games', (req, res) => {
 	axios({
         method: "GET",
 		url: 'https://sportspage-feeds.p.rapidapi.com/games',
@@ -112,7 +112,7 @@ router.get('/ncaaf/teams', (req, res) => {
 		});
 });
 
-router.get('/ncaab/teams', (req, res) => {
+router.get('/ncaab/games', (req, res) => {
 	axios({
         method: "GET",
 		url: 'https://sportspage-feeds.p.rapidapi.com/games',
@@ -130,6 +130,8 @@ router.get('/ncaab/teams', (req, res) => {
 			res.status(500).json({ message: err });
 		});
 });
+
+
 
 module.exports = router
 
