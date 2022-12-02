@@ -12,13 +12,11 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const axios = require('axios')
 
 const customErrors = require('../../lib/custom_errors')
-const user = require('../models/user')
 
 const handle404 = customErrors.handle404
 
 const router = express.Router()
 
-const User = require('../models/user')
 
 const Game = require('../models/game')  
 
@@ -137,7 +135,7 @@ router.get('/ncaab/games', (req, res) => {
 });
 
 // PATCH (NFL)
-router.patch('/nfl/games/mylibrary/:gameId', (req, res, next) => {
+router.patch('/nfl/games/mybookmarks/:gameId', (req, res, next) => {
     delete req.body.game.owner
 
     const gameId = req.params.gameId

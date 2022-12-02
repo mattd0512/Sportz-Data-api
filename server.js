@@ -4,11 +4,11 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 // require route files
-const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
 const sportRoutes = require('./app/routes/sport_routes')
 const teamRoutes = require('./app/routes/team_routes')
 const gameRoutes = require('./app/routes/game_routes')
+const predictionRoutes = require('./app/routes/prediction_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -68,11 +68,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
-app.use(exampleRoutes)
 app.use(userRoutes)
 app.use(sportRoutes)
 app.use(teamRoutes)
 app.use(gameRoutes)
+app.use(predictionRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
