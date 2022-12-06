@@ -1,3 +1,4 @@
+//i believe these are comments from the monster pets repo. this is how your comments should be on your client repo as well.
 // require necessary NPM packages
 const express = require('express')
 const mongoose = require('mongoose')
