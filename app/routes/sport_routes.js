@@ -135,7 +135,7 @@ router.get('/ncaab', (req, res) => {
 			res.status(500).json({ message: err });
 		});
 });
-
+//get rid of commented out code when you can
 // 
 // router.get('sports/myteams/:apiId', requireToken, (req, res, next) => {
 //     const apiId = req.params.apiId
